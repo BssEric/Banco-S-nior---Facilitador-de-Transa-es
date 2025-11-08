@@ -18,12 +18,19 @@ const Header = () => {
 
   return (
     <header className={`header ${theme}`}>
-      <div className="header-content">
-        <div className="header-info">
-          <h1>{t.app.title}</h1>
-          <p>{t.app.welcome}, {user?.displayName}!</p>
+      <div className="header-container">
+        {/* Logo + Nome à esquerda */}
+        <div className="header-brand">
+          <div className="logo-img">
+            🏦
+          </div>
+          <div className="brand-text">
+            <h1>{t.app.title}</h1>
+            <p>{t.app.welcome}, {user?.displayName}!</p>
+          </div>
         </div>
         
+        {/* Botão Sair à direita */}
         <div className="header-actions">
           <button 
             onClick={handleLogout}
