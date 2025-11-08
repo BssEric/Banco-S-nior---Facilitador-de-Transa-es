@@ -34,6 +34,34 @@
   pointer-events: none;
 }
 
+/* FUNDO PRINCIPAL DO WIDGET */
+.accessibility-controls {
+  background: white !important;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: fixed;
+  z-index: 10000;
+}
+
+/* Quando minimizado */
+.accessibility-controls.minimized {
+  background: linear-gradient(135deg, var(--primary) 0%, #0047AB 100%) !important;
+}
+
+/* Conteúdo interno com fundo branco */
+.accessibility-panel {
+  background: white !important;
+  padding: 1rem;
+  border-radius: 0 0 12px 12px;
+}
+
+/* Se tiver mais elementos internos */
+.accessibility-content {
+  background: white !important;
+}
+
 .accessibility-controls.minimized .drag-handle {
   border-radius: 12px !important;
 }
