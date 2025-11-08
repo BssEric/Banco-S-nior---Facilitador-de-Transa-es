@@ -24,27 +24,29 @@ function AppContent() {
   return (
     <div className="app">
       <Header />
-      <main className="main-content">
-        <Navigation />
-        <div className="content-area">
-          <div className="container-fluid">
-            <div className="row justify-content-center">
-              <div className="col-12 col-xxl-10">
-                <div className="row g-4">
-                  {/* Coluna Principal */}
-                  <div className="col-12 col-lg-8">
-                    <div className="d-flex flex-column gap-4">
-                      <AccountSummary />
-                      <FinancialSummary />
-                      <TransactionHistory />
+      <div className="main-container">
+        <div className="content-wrapper">
+          <Navigation />
+          <div className="main-content-area">
+            <div className="container-fluid">
+              <div className="row justify-content-center">
+                <div className="col-12 col-xxl-10">
+                  <div className="row g-4">
+                    {/* Coluna Principal */}
+                    <div className="col-12 col-lg-8">
+                      <div className="d-flex flex-column gap-4">
+                        <AccountSummary />
+                        <FinancialSummary />
+                        <TransactionHistory />
+                      </div>
                     </div>
-                  </div>
-                  
-                  {/* Sidebar */}
-                  <div className="col-12 col-lg-4">
-                    <div className="d-flex flex-column gap-4">
-                      <QuickActions />
-                      <RecentContacts />
+                    
+                    {/* Sidebar */}
+                    <div className="col-12 col-lg-4">
+                      <div className="d-flex flex-column gap-4">
+                        <QuickActions />
+                        <RecentContacts />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -52,7 +54,7 @@ function AppContent() {
             </div>
           </div>
         </div>
-      </main>
+      </div>
       <AccessibilityControls />
     </div>
   );
