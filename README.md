@@ -1,16 +1,47 @@
-# React + Vite
+Projeto para praticar UX (User Experience)
+🏦 Banco Sênior — Facilitador de Trancisões
+🧓 Sobre o Projeto 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+O Banco Sênior é um projeto de banco digital desenvolvido com foco total em acessibilidade e experiência do usuário (UX) para o público idoso.
+A proposta é tornar as operações bancárias simples, seguras e acessíveis, valorizando a autonomia e o conforto digital de cada usuário.
 
-Currently, two official plugins are available:
+Com um design inclusivo e interface adaptável, o Banco Sênior garante que todos possam usar tecnologia sem barreiras.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🎯 Objetivo
 
-## React Compiler
+Promover a inclusão digital de pessoas idosas por meio de uma plataforma bancária intuitiva, acessível e empática, com recursos que melhoram a visibilidade, compreensão e navegação.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+🧩 Funcionalidades Principais
+👁️‍🗨️ Acessibilidade
 
-## Expanding the ESLint configuration
+🔳 Modo Alto Contraste: ideal para pessoas com baixa visão, destacando textos e ícones.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🔠 Aumento de Fonte: o usuário pode aumentar o tamanho das letras conforme sua necessidade.
+
+🌗 Modo Claro e Escuro: alterna entre temas para reduzir o cansaço visual.
+
+🎯 Design Intuitivo: botões grandes, textos diretos e navegação sem distrações.
+
+💬 Experiência do Usuário (UX)
+
+Linguagem clara e acessível, evitando jargões técnicos.
+
+Ícones explicativos que reforçam ações visuais.
+
+Feedback visual.
+
+Layout responsivo e adaptado para celulares e tablets.
+
+⚙️ Tecnologias Utilizadas
+
+Frontend: React.js
+
+Estilização: Boostrap
+
+🧠 Conceitos de UX Aplicados
+
+Design Centrado no Usuário (DCU): desenvolvido a partir das necessidades do público idoso.
+
+Heurísticas de Nielsen: foco em visibilidade, consistência e prevenção de erros.
+
+Teste de Usabilidade: conduzido com base em cenários reais de navegação.
