@@ -25,19 +25,21 @@ const AccessibilityControls = () => {
   const [isMinimized, setIsMinimized] = useState(false);
   const dragRef = useRef(null);
 
-  const handleMouseDown = (e) => {
+  // Função para iniciar arrasto (mouse e touch)
+  const handleDragStart = (clientX, clientY) => {
     setIsDragging(true);
     dragRef.current = {
-      offsetX: e.clientX - position.x,
-      offsetY: e.clientY - position.y
+      offsetX: clientX - position.x,
+      offsetY: clientY - position.y
     };
   };
 
-  const handleMouseMove = (e) => {
+  // Função para mover (mouse e touch)
+  const handleDragMove = (clientX, clientY) => {
     if (!isDragging || !dragRef.current) return;
     
-    const newX = e.clientX - dragRef.current.offsetX;
-    const newY = e.clientY - dragRef.current.offsetY;
+    const newX = clientX - dragRef.current.offsetX;
+    const newY = clientY - dragRef.current.offsetY;
     
     // Limitar dentro da tela
     const maxX = window.innerWidth - 300;
@@ -49,9 +51,36 @@ const AccessibilityControls = () => {
     });
   };
 
-  const handleMouseUp = () => {
+  // Função para parar arrasto
+  const handleDragEnd = () => {
     setIsDragging(false);
     dragRef.current = null;
+  };
+
+  // Eventos de Mouse
+  const handleMouseDown = (e) => {
+    e.preventDefault();
+    handleDragStart(e.clientX, e.clientY);
+  };
+
+  const handleMouseMove = (e) => {
+    handleDragMove(e.clientX, e.clientY);
+  };
+
+  // Eventos de Touch
+  const handleTouchStart = (e) => {
+    e.preventDefault();
+    const touch = e.touches[0];
+    handleDragStart(touch.clientX, touch.clientY);
+  };
+
+  const handleTouchMove = (e) => {
+    const touch = e.touches[0];
+    handleDragMove(touch.clientX, touch.clientY);
+  };
+
+  const handleTouchEnd = () => {
+    handleDragEnd();
   };
 
   const toggleMinimize = () => {
@@ -61,12 +90,19 @@ const AccessibilityControls = () => {
   // Adicionar event listeners para dragging
   React.useEffect(() => {
     if (isDragging) {
+      // Mouse events
       document.addEventListener('mousemove', handleMouseMove);
-      document.addEventListener('mouseup', handleMouseUp);
+      document.addEventListener('mouseup', handleDragEnd);
+      
+      // Touch events
+      document.addEventListener('touchmove', handleTouchMove, { passive: false });
+      document.addEventListener('touchend', handleTouchEnd);
       
       return () => {
         document.removeEventListener('mousemove', handleMouseMove);
-        document.removeEventListener('mouseup', handleMouseUp);
+        document.removeEventListener('mouseup', handleDragEnd);
+        document.removeEventListener('touchmove', handleTouchMove);
+        document.removeEventListener('touchend', handleTouchEnd);
       };
     }
   }, [isDragging]);
@@ -78,13 +114,15 @@ const AccessibilityControls = () => {
         position: 'fixed',
         left: `${position.x}px`,
         top: `${position.y}px`,
-        zIndex: 1000
+        zIndex: 1000,
+        touchAction: 'none' // Importante para touch
       }}
     >
       {/* Handle para arrastar e minimizar */}
       <div 
         className="drag-handle"
         onMouseDown={handleMouseDown}
+        onTouchStart={handleTouchStart}
         title="Arraste para mover | Clique para minimizar/expandir"
       >
         <div className="handle-content">
@@ -97,6 +135,11 @@ const AccessibilityControls = () => {
           <button 
             className="minimize-btn"
             onClick={toggleMinimize}
+            onTouchEnd={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              toggleMinimize();
+            }}
             aria-label={isMinimized ? 'Expandir configurações' : 'Minimizar configurações'}
             title={isMinimized ? 'Expandir' : 'Minimizar'}
           >
@@ -127,6 +170,10 @@ const AccessibilityControls = () => {
             <div className="font-controls d-flex align-items-center gap-2">
               <button 
                 onClick={decreaseFontSize} 
+                onTouchEnd={(e) => {
+                  e.preventDefault();
+                  decreaseFontSize();
+                }}
                 aria-label={t.accessibility.decreaseFont}
                 className="btn btn-outline-secondary control-button large-target"
                 disabled={fontSize === 'small'}
@@ -141,6 +188,10 @@ const AccessibilityControls = () => {
               </span>
               <button 
                 onClick={increaseFontSize} 
+                onTouchEnd={(e) => {
+                  e.preventDefault();
+                  increaseFontSize();
+                }}
                 aria-label={t.accessibility.increaseFont}
                 className="btn btn-outline-secondary control-button large-target"
                 disabled={fontSize === 'x-large'}
@@ -154,6 +205,10 @@ const AccessibilityControls = () => {
             <label className="form-label">{t.accessibility.theme}</label>
             <button 
               onClick={toggleTheme}
+              onTouchEnd={(e) => {
+                e.preventDefault();
+                toggleTheme();
+              }}
               className="btn btn-primary theme-toggle large-target w-100"
               aria-label={`Mudar para tema ${theme === 'light' ? 'escuro' : 'claro'}`}
             >
@@ -168,6 +223,10 @@ const AccessibilityControls = () => {
                 className="form-check-input large-target"
                 checked={highContrast}
                 onChange={(e) => setHighContrast(e.target.checked)}
+                onTouchEnd={(e) => {
+                  e.preventDefault();
+                  setHighContrast(!highContrast);
+                }}
                 id="highContrast"
               />
               <label className="form-check-label" htmlFor="highContrast">
