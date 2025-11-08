@@ -6,62 +6,62 @@ const GlobalStyles = () => {
   const { fontSize, highContrast } = useAccessibility();
   const { theme } = useTheme();
 
-  // Novas cores marrom/bege - mais aconchegantes
+  // Novas cores bancárias - Azul (confiança) e Verde (prosperidade)
   const getThemeVariables = () => {
     if (highContrast) {
       return {
         '--background': '#000000',
         '--surface': '#000000',
-        '--primary': '#ffff00',
-        '--primary-hover': '#ffff00',
-        '--secondary': '#8B4513',
-        '--accent': '#D2691E',
+        '--primary': '#0066CC',
+        '--primary-hover': '#0052A3',
+        '--secondary': '#00A86B',
+        '--accent': '#FF6B35',
         '--text': '#ffffff',
         '--heading': '#ffffff',
         '--border': '#ffffff',
-        '--focus': '#ffff00',
+        '--focus': '#0066CC',
         '--shadow': 'rgba(255, 255, 255, 0.5)',
-        '--success': '#00ff00',
-        '--warning': '#ffff00',
-        '--error': '#ff0000'
+        '--success': '#00FF00',
+        '--warning': '#FFFF00',
+        '--error': '#FF0000'
       };
     }
     
     if (theme === 'dark') {
       return {
-        '--background': '#2C1810',
-        '--surface': '#3D2B1F',
-        '--primary': '#8B4513',
-        '--primary-hover': '#A0522D',
-        '--secondary': '#D2691E',
-        '--accent': '#F4A460',
-        '--text': '#F5F5DC',
+        '--background': '#0A1A2F',
+        '--surface': '#1E2B3E',
+        '--primary': '#0066CC',
+        '--primary-hover': '#0084FF',
+        '--secondary': '#00A86B',
+        '--accent': '#FF6B35',
+        '--text': '#E8F4F8',
         '--heading': '#FFFFFF',
-        '--border': '#5D4037',
-        '--focus': '#D2691E',
-        '--shadow': 'rgba(0, 0, 0, 0.3)',
-        '--success': '#8FBC8F',
-        '--warning': '#F0E68C',
-        '--error': '#CD5C5C'
+        '--border': '#2D3E50',
+        '--focus': '#0084FF',
+        '--shadow': 'rgba(0, 0, 0, 0.4)',
+        '--success': '#00C853',
+        '--warning': '#FFAB00',
+        '--error': '#FF5252'
       };
     }
     
-    // Tema light marrom (padrão)
+    // Tema light (padrão) - Cores bancárias profissionais
     return {
-      '--background': '#FDF5E6',
+      '--background': '#F8FBFE',
       '--surface': '#FFFFFF',
-      '--primary': '#8B4513',
-      '--primary-hover': '#A0522D',
-      '--secondary': '#D2691E',
-      '--accent': '#F4A460',
-      '--text': '#5D4037',
-      '--heading': '#3E2723',
-      '--border': '#D7CCC8',
-      '--focus': '#D2691E',
-      '--shadow': 'rgba(139, 69, 19, 0.1)',
-      '--success': '#8FBC8F',
-      '--warning': '#F0E68C',
-      '--error': '#CD5C5C'
+      '--primary': '#0066CC',
+      '--primary-hover': '#0052A3',
+      '--secondary': '#00A86B',
+      '--accent': '#FF6B35',
+      '--text': '#2D3748',
+      '--heading': '#1A365D',
+      '--border': '#E2E8F0',
+      '--focus': '#0066CC',
+      '--shadow': 'rgba(0, 102, 204, 0.1)',
+      '--success': '#00A86B',
+      '--warning': '#FFA000',
+      '--error': '#E53E3E'
     };
   };
 
@@ -85,7 +85,7 @@ const GlobalStyles = () => {
     }
 
     body {
-      font-family: 'Arial', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       font-size: ${fontSizes[fontSize]};
       background-color: var(--background);
       color: var(--text);
@@ -113,7 +113,7 @@ const GlobalStyles = () => {
       transition: all 0.3s ease;
       background-color: var(--primary);
       color: white;
-      font-weight: bold;
+      font-weight: 600;
     }
 
     button:hover:not(:disabled) {
@@ -131,12 +131,12 @@ const GlobalStyles = () => {
     }
 
     .btn-secondary:hover {
-      background-color: var(--accent);
+      background-color: var(--success);
     }
 
     .btn-accent {
       background-color: var(--accent);
-      color: var(--heading);
+      color: white;
     }
 
     input, select {
@@ -161,11 +161,18 @@ const GlobalStyles = () => {
       box-shadow: 0 4px 6px var(--shadow);
       margin-bottom: 20px;
       border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--shadow);
     }
 
     h1, h2, h3, h4, h5, h6 {
       color: var(--heading);
       margin-bottom: 16px;
+      font-weight: 600;
     }
 
     a {
