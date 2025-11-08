@@ -1,0 +1,248 @@
+.accessibility-controls {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  min-width: 280px;
+  max-width: 320px;
+  cursor: default;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+
+.accessibility-controls.minimized {
+  min-width: 200px;
+  max-width: 250px;
+}
+
+.accessibility-controls.dragging {
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+  cursor: grabbing;
+}
+
+.drag-handle {
+  padding: 1rem 1.5rem;
+  background: var(--primary);
+  color: white;
+  border-radius: 10px 10px 0 0;
+  cursor: grab;
+  user-select: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.accessibility-controls.minimized .drag-handle {
+  border-radius: 10px;
+}
+
+.drag-handle:hover {
+  background: var(--primary-hover);
+}
+
+.accessibility-controls.dragging .drag-handle {
+  cursor: grabbing;
+}
+
+.handle-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.handle-icon {
+  font-size: 1.1em;
+}
+
+.handle-title {
+  font-size: 0.95em;
+}
+
+.accessibility-controls.minimized .handle-title {
+  font-size: 0.9em;
+}
+
+.handle-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.minimize-btn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  font-size: 0.9em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  min-height: 24px;
+}
+
+.minimize-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.controls-container {
+  padding: 1.5rem;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.control-group {
+  margin-bottom: 1.5rem;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.control-group:last-child {
+  margin-bottom: 0;
+}
+
+.control-group .form-label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--heading);
+}
+
+.font-controls {
+  margin: 0.5rem 0;
+}
+
+.font-size-indicator {
+  font-weight: 500;
+  font-size: 0.9em;
+}
+
+.control-button {
+  min-width: 45px;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.form-check:hover {
+  background: var(--background);
+}
+
+.form-check-input {
+  margin: 0;
+}
+
+.form-check-label {
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* Estado minimizado compacto */
+.accessibility-controls.minimized .controls-container {
+  display: none;
+}
+
+/* Badge para mostrar configurações ativas quando minimizado */
+.minimized-status {
+  display: none;
+}
+
+.accessibility-controls.minimized .minimized-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  background: var(--background);
+  border-radius: 0 0 10px 10px;
+  font-size: 0.8em;
+  color: var(--text);
+  opacity: 0.8;
+  gap: 0.5rem;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .accessibility-controls {
+    position: fixed !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%);
+    max-width: 90vw;
+    min-width: auto;
+  }
+  
+  .accessibility-controls.minimized {
+    position: fixed !important;
+    left: 20px !important;
+    top: 20px !important;
+    transform: none;
+    min-width: 150px;
+  }
+  
+  .drag-handle {
+    cursor: default;
+  }
+  
+  .handle-title {
+    font-size: 0.85em;
+  }
+}
+
+@media (max-width: 480px) {
+  .accessibility-controls {
+    min-width: 250px;
+  }
+  
+  .accessibility-controls.minimized {
+    min-width: 120px;
+  }
+  
+  .handle-title {
+    font-size: 0.8em;
+  }
+}

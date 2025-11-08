@@ -1,0 +1,51 @@
+.app {
+  min-height: 100vh;
+  background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  display: flex;
+  min-height: calc(100vh - 80px);
+  flex: 1;
+}
+
+.content-area {
+  flex: 1;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+/* Ajustes para compatibilidade com Bootstrap */
+.card {
+  background-color: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 12px var(--shadow) !important;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--shadow) !important;
+}
+
+/* Garantir que nossos componentes funcionem com Bootstrap */
+.container-fluid {
+  padding: 0 1rem;
+}
+
+/* Responsividade melhorada */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+  
+  .content-area {
+    padding: 1rem 0;
+  }
+  
+  .container-fluid {
+    padding: 0 0.5rem;
+  }
+}

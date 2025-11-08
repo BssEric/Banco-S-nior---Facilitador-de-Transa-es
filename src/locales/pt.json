@@ -1,0 +1,84 @@
+{
+  "app": {
+    "title": "Banco Sênior",
+    "welcome": "Bem-vindo de volta"
+  },
+  "navigation": {
+    "dashboard": "Painel",
+    "accounts": "Contas",
+    "transfers": "Transferências",
+    "payments": "Pagamentos",
+    "cards": "Cartões",
+    "help": "Ajuda"
+  },
+  "account": {
+    "summary": "Resumo da Conta",
+    "balance": "Saldo Disponível",
+    "accountNumber": "Conta Corrente",
+    "savings": "Poupança"
+  },
+  "transactions": {
+    "title": "Últimas Transações",
+    "date": "Data",
+    "description": "Descrição",
+    "amount": "Valor",
+    "type": "Tipo"
+  },
+  "accessibility": {
+    "language": "Idioma",
+    "fontSize": "Tamanho da Fonte",
+    "theme": "Tema",
+    "contrast": "Alto Contraste",
+    "increaseFont": "Aumentar Fonte",
+    "decreaseFont": "Diminuir Fonte"
+  },
+  "login": {
+    "welcomeBack": "Bem-vindo de volta!",
+    "createAccount": "Criar nova conta",
+    "name": "Nome completo",
+    "namePlaceholder": "Digite seu nome completo",
+    "email": "E-mail",
+    "emailPlaceholder": "Digite seu e-mail",
+    "password": "Senha",
+    "passwordPlaceholder": "Digite sua senha",
+    "confirmPassword": "Confirmar senha",
+    "confirmPasswordPlaceholder": "Digite novamente sua senha",
+    "signIn": "Entrar",
+    "signUp": "Cadastrar",
+    "noAccount": "Não tem uma conta? Cadastre-se",
+    "haveAccount": "Já tem uma conta? Entre aqui",
+    "loading": "Carregando...",
+    "accessibilityNote": "Este sistema foi desenvolvido com foco em acessibilidade para melhor atender nossos usuários.",
+    "errors": {
+      "fillAllFields": "Por favor, preencha todos os campos",
+      "passwordMismatch": "As senhas não coincidem",
+      "nameRequired": "Por favor, informe seu nome completo",
+      "generic": "Erro ao processar sua solicitação"
+    },
+        "quickActions": {
+        "title": "Quick Actions",
+        "transfer": "Transfer",
+        "pay": "Pay",
+        "pix": "PIX",
+        "extract": "Statement",
+        "opening": "Opening"
+        },
+        "recentContacts": {
+        "title": "Recent Contacts",
+        "transferringTo": "Transferring to"
+        },
+        "financialSummary": {
+        "title": "Financial Summary",
+        "totalBalance": "Total Balance",
+        "monthlyIncome": "Monthly Income",
+        "monthlyExpenses": "Monthly Expenses",
+        "investments": "Investments"
+        },
+"accessibility": {
+  "title": "Configurações"
+}
+  },
+  "header": {
+    "logout": "Sair"
+  }
+}

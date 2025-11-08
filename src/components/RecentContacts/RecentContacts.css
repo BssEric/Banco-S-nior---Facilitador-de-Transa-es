@@ -1,0 +1,102 @@
+.recent-contacts {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.recent-contacts h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--heading);
+  font-size: 1.8em;
+}
+
+.contacts-list {
+  margin-top: 1rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1.5rem;
+  border: none;
+  border-bottom: 2px solid var(--border);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 0;
+}
+
+.contact-item:first-child {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.contact-item:last-child {
+  border-bottom: none;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.contact-item:hover {
+  background-color: var(--background);
+  transform: translateX(5px);
+}
+
+.contact-avatar {
+  font-size: 2.5em;
+  margin-right: 1.5rem;
+  flex-shrink: 0;
+}
+
+.contact-info {
+  flex: 1;
+  text-align: left;
+}
+
+.contact-name {
+  font-weight: 600;
+  color: var(--heading);
+  margin-bottom: 0.5rem;
+  font-size: 1.1em;
+}
+
+.contact-details {
+  font-size: 0.9em;
+  opacity: 0.7;
+}
+
+.contact-action {
+  margin-left: auto;
+}
+
+.transfer-icon {
+  font-size: 1.4em;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover .transfer-icon {
+  opacity: 1;
+  transform: translateX(5px) scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .contact-item {
+    padding: 1.25rem;
+  }
+  
+  .contact-avatar {
+    font-size: 2em;
+    margin-right: 1rem;
+  }
+  
+  .contact-name {
+    font-size: 1em;
+  }
+  
+  .recent-contacts h2 {
+    font-size: 1.5em;
+    margin-bottom: 1.5rem;
+  }
+}

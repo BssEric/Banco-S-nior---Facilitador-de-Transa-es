@@ -1,0 +1,110 @@
+.financial-summary {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.financial-summary h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--heading);
+  font-size: 1.8em;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 1rem;
+  justify-items: center;
+}
+
+.summary-item {
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+  border-radius: 16px;
+  border: 2px solid var(--border);
+  background: var(--surface);
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 350px;
+  text-align: left;
+}
+
+.summary-item:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary);
+  box-shadow: 0 8px 24px var(--shadow);
+}
+
+.summary-icon {
+  font-size: 2.8em;
+  margin-right: 1.5rem;
+  flex-shrink: 0;
+}
+
+.summary-info {
+  flex: 1;
+}
+
+.summary-label {
+  font-size: 0.95em;
+  opacity: 0.8;
+  margin-bottom: 0.75rem;
+  text-align: left;
+}
+
+.summary-value {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--heading);
+  text-align: left;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: var(--border);
+  border-radius: 4px;
+  margin-top: 0.75rem;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--error), var(--warning));
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+@media (max-width: 768px) {
+  .summary-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .summary-item {
+    padding: 1.5rem;
+    max-width: 100%;
+    text-align: center;
+  }
+  
+  .summary-info {
+    text-align: center;
+  }
+  
+  .summary-label,
+  .summary-value {
+    text-align: center;
+  }
+  
+  .financial-summary h2 {
+    font-size: 1.5em;
+    margin-bottom: 1.5rem;
+  }
+  
+  .summary-icon {
+    font-size: 2.2em;
+    margin-right: 1rem;
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "app": {
+    "title": "Banco Senior",
+    "welcome": "Bienvenido de nuevo"
+  },
+  "navigation": {
+    "dashboard": "Panel",
+    "accounts": "Cuentas",
+    "transfers": "Transferencias",
+    "payments": "Pagos",
+    "cards": "Tarjetas",
+    "help": "Ayuda"
+  },
+  "account": {
+    "summary": "Resumen de Cuenta",
+    "balance": "Saldo Disponible",
+    "accountNumber": "Cuenta Corriente",
+    "savings": "Ahorros"
+  },
+  "transactions": {
+    "title": "Transacciones Recientes",
+    "date": "Fecha",
+    "description": "Descripción",
+    "amount": "Monto",
+    "type": "Tipo"
+  },
+  "accessibility": {
+    "language": "Idioma",
+    "fontSize": "Tamaño de Fuente",
+    "theme": "Tema",
+    "contrast": "Alto Contraste",
+    "increaseFont": "Aumentar Fuente",
+    "decreaseFont": "Disminuir Fuente"
+  },
+  "login": {
+    "welcomeBack": "¡Bienvenido de nuevo!",
+    "createAccount": "Crear nueva cuenta",
+    "name": "Nombre completo",
+    "namePlaceholder": "Ingrese su nombre completo",
+    "email": "Correo electrónico",
+    "emailPlaceholder": "Ingrese su correo electrónico",
+    "password": "Contraseña",
+    "passwordPlaceholder": "Ingrese su contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "confirmPasswordPlaceholder": "Ingrese su contraseña nuevamente",
+    "signIn": "Iniciar Sesión",
+    "signUp": "Registrarse",
+    "noAccount": "¿No tienes una cuenta? Regístrate",
+    "haveAccount": "¿Ya tienes una cuenta? Inicia sesión",
+    "loading": "Cargando...",
+    "accessibilityNote": "Este sistema fue desarrollado con enfoque en accesibilidad para servir mejor a nuestros usuarios.",
+    "errors": {
+      "fillAllFields": "Por favor, complete todos los campos",
+      "passwordMismatch": "Las contraseñas no coinciden",
+      "nameRequired": "Por favor, ingrese su nombre completo",
+      "generic": "Error al procesar su solicitud"
+    },
+    "quickActions": {
+  "title": "Acciones Rápidas",
+  "transfer": "Transferir",
+  "pay": "Pagar",
+  "pix": "PIX",
+  "extract": "Extracto",
+  "opening": "Abriendo"
+},
+"recentContacts": {
+  "title": "Contactos Recientes",
+  "transferringTo": "Transfiriendo a"
+},
+"financialSummary": {
+  "title": "Resumen Financiero",
+  "totalBalance": "Saldo Total",
+  "monthlyIncome": "Ingreso Mensual",
+  "monthlyExpenses": "Gastos Mensuales",
+  "investments": "Inversiones"
+},
+"accessibility": {
+  "title": "Configuración"
+}
+  },
+  "header": {
+    "logout": "Cerrar Sesión"
+  }
+}

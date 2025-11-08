@@ -1,0 +1,134 @@
+.transaction-history {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.transaction-history h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--heading);
+  font-size: 1.8em;
+}
+
+.transactions-table {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: var(--surface);
+  border-bottom: 3px solid var(--border);
+  font-weight: bold;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  text-align: center;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  border-bottom: 2px solid var(--border);
+  transition: background-color 0.3s ease;
+  text-align: center;
+  align-items: center;
+}
+
+.table-row:last-child {
+  border-bottom: none;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.table-row:hover {
+  background: var(--background);
+  transform: translateX(5px);
+}
+
+.table-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.amount.positive {
+  color: var(--success);
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.amount.negative {
+  color: var(--error);
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.type-badge {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85em;
+  font-weight: 600;
+  text-transform: capitalize;
+  display: inline-block;
+  min-width: 100px;
+}
+
+.type-badge.compra {
+  background: linear-gradient(135deg, var(--warning), #FFA726);
+  color: #5D4037;
+}
+
+.type-badge.depósito {
+  background: linear-gradient(135deg, var(--success), #66BB6A);
+  color: #1B5E20;
+}
+
+.type-badge.transferência {
+  background: linear-gradient(135deg, var(--accent), #FFB74D);
+  color: #4E342E;
+}
+
+@media (max-width: 768px) {
+  .table-header {
+    display: none;
+  }
+  
+  .table-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1.5rem;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+  
+  .table-cell {
+    justify-content: flex-start;
+    text-align: left;
+  }
+  
+  .table-cell::before {
+    content: attr(data-label);
+    font-weight: bold;
+    margin-right: 0.75rem;
+    min-width: 80px;
+    color: var(--heading);
+  }
+  
+  .transaction-history h2 {
+    font-size: 1.5em;
+    margin-bottom: 1.5rem;
+  }
+  
+  .type-badge {
+    min-width: 80px;
+    text-align: center;
+  }
+}
