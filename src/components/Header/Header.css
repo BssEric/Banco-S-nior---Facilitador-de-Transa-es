@@ -1,42 +1,68 @@
 .header {
-  padding: 1.5rem 2rem;
   background: var(--primary);
   color: white;
-  box-shadow: 0 4px 12px var(--shadow);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  border-bottom: 3px solid var(--primary-hover);
 }
 
-.header-content {
+.header-container {
   max-width: 1400px;
   margin: 0 auto;
+  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
-.header-info {
-  text-align: center;
+/* Logo + Nome à esquerda */
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   flex: 1;
 }
 
-.header-info h1 {
-  margin: 0;
-  font-size: 2.2em;
-  font-weight: 700;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.header-info p {
-  margin: 0.5rem 0 0 0;
-  opacity: 0.9;
-  font-size: 1.1em;
-}
-
-.header-actions {
+.logo-img {
+  font-size: 2.5em;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 60px;
+  min-height: 60px;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-text h1 {
+  margin: 0;
+  font-size: 1.8em;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  line-height: 1.2;
+}
+
+.brand-text p {
+  margin: 0.25rem 0 0 0;
+  opacity: 0.9;
+  font-size: 1em;
+  font-weight: 500;
+}
+
+/* Botão Sair à direita */
+.header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
 }
 
 .logout-button {
@@ -47,6 +73,7 @@
   border-radius: 8px;
   transition: all 0.3s ease;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .logout-button:hover {
@@ -55,22 +82,60 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+/* Responsividade */
 @media (max-width: 768px) {
-  .header {
+  .header-container {
     padding: 1rem;
-  }
-  
-  .header-content {
-    flex-direction: column;
-    text-align: center;
     gap: 1rem;
   }
   
-  .header-info h1 {
-    font-size: 1.8em;
+  .header-brand {
+    gap: 0.75rem;
   }
   
-  .header-info p {
-    font-size: 1em;
+  .logo-img {
+    font-size: 2em;
+    min-width: 50px;
+    min-height: 50px;
+    padding: 0.4rem;
+  }
+  
+  .brand-text h1 {
+    font-size: 1.4em;
+  }
+  
+  .brand-text p {
+    font-size: 0.9em;
+  }
+  
+  .logout-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-container {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .header-brand {
+    justify-content: center;
+  }
+  
+  .brand-text {
+    align-items: center;
+  }
+  
+  .header-actions {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .logout-button {
+    width: 100%;
+    max-width: 200px;
   }
 }
