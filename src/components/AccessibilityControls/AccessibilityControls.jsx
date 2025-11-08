@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import { useAccessibility } from '../../contexts/AccessibilityContext';
 import { useTheme } from '../../contexts/ThemeContext';
 import translations from '../../locales';
@@ -14,173 +14,57 @@ const AccessibilityControls = () => {
     highContrast,
     setHighContrast
   } = useAccessibility();
-  
+
   const { theme, toggleTheme } = useTheme();
-  
+
   const t = translations[language];
 
-  // Estado para posição arrastável
-  const [position, setPosition] = useState({ x: 20, y: 50 });
-  const [isDragging, setIsDragging] = useState(false);
-  const [isMinimized, setIsMinimized] = useState(false);
-  const dragRef = useRef(null);
-
-  // Função para iniciar arrasto (mouse e touch)
-  const handleDragStart = (clientX, clientY) => {
-    setIsDragging(true);
-    dragRef.current = {
-      offsetX: clientX - position.x,
-      offsetY: clientY - position.y
-    };
-  };
-
-  // Função para mover (mouse e touch)
-  const handleDragMove = (clientX, clientY) => {
-    if (!isDragging || !dragRef.current) return;
-    
-    const newX = clientX - dragRef.current.offsetX;
-    const newY = clientY - dragRef.current.offsetY;
-    
-    // Limitar dentro da tela
-    const maxX = window.innerWidth - 300;
-    const maxY = window.innerHeight - 400;
-    
-    setPosition({
-      x: Math.max(0, Math.min(newX, maxX)),
-      y: Math.max(0, Math.min(newY, maxY))
-    });
-  };
-
-  // Função para parar arrasto
-  const handleDragEnd = () => {
-    setIsDragging(false);
-    dragRef.current = null;
-  };
-
-  // Eventos de Mouse
-  const handleMouseDown = (e) => {
-    e.preventDefault();
-    handleDragStart(e.clientX, e.clientY);
-  };
-
-  const handleMouseMove = (e) => {
-    handleDragMove(e.clientX, e.clientY);
-  };
-
-  // Eventos de Touch
-  const handleTouchStart = (e) => {
-    e.preventDefault();
-    const touch = e.touches[0];
-    handleDragStart(touch.clientX, touch.clientY);
-  };
-
-  const handleTouchMove = (e) => {
-    const touch = e.touches[0];
-    handleDragMove(touch.clientX, touch.clientY);
-  };
-
-  const handleTouchEnd = () => {
-    handleDragEnd();
-  };
-
-  const toggleMinimize = () => {
-    setIsMinimized(!isMinimized);
-  };
-
-  // Adicionar event listeners para dragging
-  React.useEffect(() => {
-    if (isDragging) {
-      // Mouse events
-      document.addEventListener('mousemove', handleMouseMove);
-      document.addEventListener('mouseup', handleDragEnd);
-      
-      // Touch events
-      document.addEventListener('touchmove', handleTouchMove, { passive: false });
-      document.addEventListener('touchend', handleTouchEnd);
-      
-      return () => {
-        document.removeEventListener('mousemove', handleMouseMove);
-        document.removeEventListener('mouseup', handleDragEnd);
-        document.removeEventListener('touchmove', handleTouchMove);
-        document.removeEventListener('touchend', handleTouchEnd);
-      };
-    }
-  }, [isDragging]);
-
   return (
-    <div 
-      className={`accessibility-controls ${theme} ${isDragging ? 'dragging' : ''} ${isMinimized ? 'minimized' : ''}`}
-      style={{
-        position: 'fixed',
-        left: `${position.x}px`,
-        top: `${position.y}px`,
-        zIndex: 1000,
-        touchAction: 'none' // Importante para touch
-      }}
-    >
-      {/* Handle para arrastar e minimizar */}
-      <div 
-        className="drag-handle"
-        onMouseDown={handleMouseDown}
-        onTouchStart={handleTouchStart}
-        title="Arraste para mover | Clique para minimizar/expandir"
-      >
-        <div className="handle-content">
-          <span className="handle-icon">⚙️</span>
-          <span className="handle-title">
-            {t.accessibility?.title || 'Configurações'}
+    <header className={`accessibility-header ${theme}`}>
+      <div className="header-container">
+        {/* Logo ou título do site */}
+        <div className="header-brand">
+          <span className="brand-icon">🏦</span>
+          <span className="brand-title">
+            {t.accessibility?.title || 'Configurações de Acessibilidade'}
           </span>
         </div>
-        <div className="handle-actions">
-          <button 
-            className="minimize-btn"
-            onClick={toggleMinimize}
-            onTouchEnd={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              toggleMinimize();
-            }}
-            aria-label={isMinimized ? 'Expandir configurações' : 'Minimizar configurações'}
-            title={isMinimized ? 'Expandir' : 'Minimizar'}
-          >
-            {isMinimized ? '➕' : '➖'}
-          </button>
-        </div>
-      </div>
-      
-      {/* Conteúdo - só mostra quando não estiver minimizado */}
-      {!isMinimized && (
-        <div className="controls-container">
-          <div className="control-group">
-            <label className="form-label">{t.accessibility.language}</label>
+
+        {/* Controles de acessibilidade */}
+        <div className="header-controls">
+          {/* Seletor de Idioma */}
+          <div className="control-item">
+            <label className="control-label" htmlFor="language-select">
+              {t.accessibility.language}
+            </label>
             <select 
+              id="language-select"
               value={language} 
               onChange={(e) => setLanguage(e.target.value)}
               aria-label={t.accessibility.language}
-              className="form-select large-target"
+              className="form-select header-select"
             >
-              <option value="pt">Português</option>
-              <option value="en">English</option>
-              <option value="es">Español</option>
+              <option value="pt">🇧🇷 PT</option>
+              <option value="en">🇺🇸 EN</option>
+              <option value="es">🇪🇸 ES</option>
             </select>
           </div>
 
-          <div className="control-group">
-            <label className="form-label">{t.accessibility.fontSize}</label>
-            <div className="font-controls d-flex align-items-center gap-2">
+          {/* Controle de Tamanho de Fonte */}
+          <div className="control-item">
+            <label className="control-label">
+              {t.accessibility.fontSize}
+            </label>
+            <div className="font-controls">
               <button 
                 onClick={decreaseFontSize} 
-                onTouchEnd={(e) => {
-                  e.preventDefault();
-                  decreaseFontSize();
-                }}
                 aria-label={t.accessibility.decreaseFont}
-                className="btn btn-outline-secondary control-button large-target"
+                className="btn btn-outline-light control-button"
                 disabled={fontSize === 'small'}
               >
                 A-
               </button>
-              <span className="font-size-indicator flex-grow-1 text-center">
+              <span className="font-size-indicator">
                 {fontSize === 'small' && 'Pequeno'}
                 {fontSize === 'medium' && 'Médio'}
                 {fontSize === 'large' && 'Grande'}
@@ -188,12 +72,8 @@ const AccessibilityControls = () => {
               </span>
               <button 
                 onClick={increaseFontSize} 
-                onTouchEnd={(e) => {
-                  e.preventDefault();
-                  increaseFontSize();
-                }}
                 aria-label={t.accessibility.increaseFont}
-                className="btn btn-outline-secondary control-button large-target"
+                className="btn btn-outline-light control-button"
                 disabled={fontSize === 'x-large'}
               >
                 A+
@@ -201,32 +81,25 @@ const AccessibilityControls = () => {
             </div>
           </div>
 
-          <div className="control-group">
-            <label className="form-label">{t.accessibility.theme}</label>
+          {/* Toggle de Tema */}
+          <div className="control-item">
             <button 
               onClick={toggleTheme}
-              onTouchEnd={(e) => {
-                e.preventDefault();
-                toggleTheme();
-              }}
-              className="btn btn-primary theme-toggle large-target w-100"
+              className="btn btn-light theme-toggle"
               aria-label={`Mudar para tema ${theme === 'light' ? 'escuro' : 'claro'}`}
             >
-              {theme === 'light' ? '🌙 Modo Escuro' : '☀️ Modo Claro'}
+              {theme === 'light' ? '🌙 Escuro' : '☀️ Claro'}
             </button>
           </div>
 
-          <div className="control-group">
+          {/* Checkbox Alto Contraste */}
+          <div className="control-item">
             <div className="form-check">
               <input
                 type="checkbox"
-                className="form-check-input large-target"
+                className="form-check-input"
                 checked={highContrast}
                 onChange={(e) => setHighContrast(e.target.checked)}
-                onTouchEnd={(e) => {
-                  e.preventDefault();
-                  setHighContrast(!highContrast);
-                }}
                 id="highContrast"
               />
               <label className="form-check-label" htmlFor="highContrast">
@@ -235,8 +108,8 @@ const AccessibilityControls = () => {
             </div>
           </div>
         </div>
-      )}
-    </div>
+      </div>
+    </header>
   );
 };
 
