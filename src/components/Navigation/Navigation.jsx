@@ -11,7 +11,7 @@ const Navigation = () => {
   const t = translations[language];
 
   const menuItems = [
-    { key: 'dashboard', icon: '📊' },
+
     { key: 'accounts', icon: '🏦' },
     { key: 'transfers', icon: '💸' },
     { key: 'payments', icon: '💰' },
