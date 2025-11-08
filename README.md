@@ -1,5 +1,5 @@
 Projeto para praticar UX (User Experience)
-🏦 Banco Sênior — Facilitador de Transações
+🏦 Banco Sênior — Facilitador de Transferências
 🧓 Sobre o Projeto 
 
 O Banco Sênior é um projeto de banco digital desenvolvido com foco total em acessibilidade e experiência do usuário (UX) para o público idoso.
