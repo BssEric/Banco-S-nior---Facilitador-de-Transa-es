@@ -1,70 +1,331 @@
-/* Melhorias para touch em mobile */
 .accessibility-controls {
-  /* ... estilos existentes ... */
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+/Edge */
-  user-select: none; /* Standard */
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  min-width: 280px;
+  max-width: 320px;
+  cursor: default;
+  user-select: none;
+  transition: all 0.3s ease;
+  overflow: hidden; /* Importante para bordas arredondadas */
 }
 
+.accessibility-controls.minimized {
+  min-width: 200px;
+  max-width: 250px;
+}
+
+.accessibility-controls.dragging {
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+  cursor: grabbing;
+}
+
+/* CABEÇALHO CORRIGIDO - Usando variáveis CSS do tema */
 .drag-handle {
-  /* ... estilos existentes ... */
-  -webkit-tap-highlight-color: transparent; /* Remove highlight no touch */
-  touch-action: none; /* Permite scroll e touch personalizado */
+  padding: 1rem 1.5rem;
+  background: var(--primary) !important; /* Força a cor do tema */
+  color: white !important;
+  border-radius: 10px 10px 0 0;
+  cursor: grab;
+  user-select: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: none;
+  border: none !important;
+  margin: 0 !important;
 }
 
-/* Melhor feedback visual para touch */
-.minimize-btn:active,
-.control-button:active {
+/* Estado minimizado - cabeçalho com bordas completas */
+.accessibility-controls.minimized .drag-handle {
+  border-radius: 10px !important;
+}
+
+.drag-handle:hover {
+  background: var(--primary-hover) !important;
+}
+
+.accessibility-controls.dragging .drag-handle {
+  cursor: grabbing;
+  background: var(--primary-hover) !important;
+}
+
+.handle-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.handle-icon {
+  font-size: 1.1em;
+}
+
+.handle-title {
+  font-size: 0.95em;
+  color: white !important;
+  font-weight: 600;
+}
+
+.accessibility-controls.minimized .handle-title {
+  font-size: 0.9em;
+}
+
+.handle-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.minimize-btn {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: white !important;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  font-size: 0.9em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  min-height: 24px;
+}
+
+.minimize-btn:hover {
+  background: rgba(255, 255, 255, 0.3) !important;
+  transform: scale(1.1);
+}
+
+.minimize-btn:active {
   transform: scale(0.95);
-  transition: transform 0.1s ease;
 }
 
-/* Para dispositivos muito pequenos */
-@media (max-width: 480px) {
+.controls-container {
+  padding: 1.5rem;
+  animation: slideDown 0.3s ease;
+  background: var(--surface);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.control-group {
+  margin-bottom: 1.5rem;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.control-group:last-child {
+  margin-bottom: 0;
+}
+
+.control-group .form-label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--heading);
+}
+
+.font-controls {
+  margin: 0.5rem 0;
+}
+
+.font-size-indicator {
+  font-weight: 500;
+  font-size: 0.9em;
+  color: var(--text);
+}
+
+.control-button {
+  min-width: 45px;
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+}
+
+.control-button:hover:not(:disabled) {
+  background: var(--primary) !important;
+  color: white !important;
+}
+
+.control-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--primary) !important;
+  border: 1px solid var(--primary) !important;
+  color: white !important;
+}
+
+.theme-toggle:hover {
+  background: var(--primary-hover) !important;
+  border-color: var(--primary-hover) !important;
+}
+
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.form-check:hover {
+  background: var(--background);
+}
+
+.form-check-input {
+  margin: 0;
+  cursor: pointer;
+}
+
+.form-check-input:checked {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.form-check-label {
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* Estado minimizado compacto */
+.accessibility-controls.minimized .controls-container {
+  display: none;
+}
+
+/* Status quando minimizado */
+.minimized-status {
+  display: none;
+  padding: 0.75rem;
+  background: var(--surface);
+  border-radius: 0 0 10px 10px;
+  font-size: 0.8em;
+  color: var(--text);
+  opacity: 0.8;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.accessibility-controls.minimized .minimized-status {
+  display: flex;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  background: var(--background);
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* CORREÇÕES PARA MOBILE */
+@media (max-width: 768px) {
   .accessibility-controls {
-    min-width: 250px;
-    max-width: 85vw;
+    position: fixed !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%);
+    max-width: 90vw;
+    min-width: auto;
   }
   
   .accessibility-controls.minimized {
-    min-width: 180px;
+    position: fixed !important;
+    left: 20px !important;
+    top: 20px !important;
+    transform: none;
+    min-width: 150px;
+  }
+  
+  .drag-handle {
+    cursor: default;
+    padding: 0.875rem 1.25rem;
+  }
+  
+  .handle-title {
+    font-size: 0.85em;
   }
   
   .controls-container {
-    padding: 1rem;
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .accessibility-controls {
+    min-width: 250px;
   }
   
-  .control-group {
-    margin-bottom: 1rem;
+  .accessibility-controls.minimized {
+    min-width: 120px;
+  }
+  
+  .handle-title {
+    font-size: 0.8em;
+  }
+  
+  .drag-handle {
+    padding: 0.75rem 1rem;
   }
 }
 
-/* Feedback visual durante o arrasto em mobile */
-.accessibility-controls.dragging {
-  opacity: 0.9;
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
+/* Garantir que as cores do tema sejam aplicadas */
+.accessibility-controls.light .drag-handle {
+  background: var(--primary) !important;
 }
 
-/* Prevenir zoom no double-tap para iOS */
-.accessibility-controls {
-  touch-action: pan-x pan-y;
+.accessibility-controls.dark .drag-handle {
+  background: var(--primary) !important;
 }
 
-.drag-handle {
-  touch-action: none; /* Permite arrastar sem interferir */
+.accessibility-controls.highContrast .drag-handle {
+  background: var(--primary) !important;
+  color: var(--text) !important;
 }
 
-/* Melhorar a área de toque nos botões */
-.control-button,
-.minimize-btn,
-.form-check-input {
-  min-height: 44px;
-  min-width: 44px;
-}
-
-/* Feedback visual para toque nos controles */
-.form-check:active {
-  background-color: var(--background);
-  transition: background-color 0.1s ease;
+/* Remover qualquer estilo do Bootstrap que possa interferir */
+.drag-handle.btn,
+.drag-handle.form-control,
+.drag-handle.form-select {
+  background: var(--primary) !important;
+  color: white !important;
+  border: none !important;
+  box-shadow: none !important;
 }
