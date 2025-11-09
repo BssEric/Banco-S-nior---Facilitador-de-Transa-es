@@ -1,16 +1,67 @@
-# React + Vite
+🏦 Banco Sênior — Acessibilidade e UX para Idosos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+📘 Descrição do Projeto
 
-Currently, two official plugins are available:
+O Banco Sênior é uma aplicação web criada com foco em UX (User Experience) e acessibilidade digital voltada especialmente para pessoas idosas.
+O objetivo é oferecer uma interface intuitiva, confortável e totalmente adaptável às necessidades de cada usuário, garantindo autonomia e inclusão no uso de serviços bancários online.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+🎯 Objetivo
 
-## Expanding the ESLint configuration
+Facilitar o acesso de idosos a serviços bancários digitais, utilizando recursos acessíveis, design responsivo e componentes de interface claros, promovendo uma navegação simples e segura.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+---
+
+💡 Principais Funcionalidades
+
+🧭 Mini Central de Controle Arrastável
+
+Uma central flutuante e móvel, que o usuário pode arrastar pela tela, oferecendo acesso rápido a ferramentas de acessibilidade:
+
+🔠 Aumentar e diminuir o tamanho da fonte — melhora a legibilidade de textos.
+
+🌙 Modo Claro / Escuro — reduz o cansaço visual.
+
+⚫ Modo Alto Contraste — reforça a distinção entre elementos visuais.
+
+🗣️ Seleção de Idioma — possibilita alternar o idioma da interface.
+
+
+Esses ajustes são salvos no navegador usando o Local Storage, garantindo que as preferências do usuário sejam mantidas nas próximas visitas.
+
+
+---
+
+🧩 Tecnologias Utilizadas
+
+Tecnologia	Função
+
+HTML5	Estrutura semântica e acessível do site
+CSS3	Estilos personalizados e contraste visual
+JavaScript (ES6+)	Controle da central de acessibilidade e interatividade
+Bootstrap 5	Framework responsivo e acessível para interface
+React (com Vite)	Criação de componentes dinâmicos e performance otimizada
+Local Storage	Armazenamento das preferências do usuário
+
+
+
+---
+
+🧠 Conceitos de UX Aplicados
+
+🧩 Design centrado no usuário (DCU) — projetado para atender às necessidades de idosos com limitações visuais ou motoras.
+
+👁️ Acessibilidade (WCAG) — aplicação das diretrizes internacionais para contraste, navegação e legibilidade.
+
+💬 Feedback visual imediato — confirma as ações do usuário em tempo real.
+
+🧼 Interface limpa e objetiva — reduz ruídos visuais e facilita a compreensão.
+
+📱 Design responsivo — compatível com diferentes tamanhos de tela.
+
+
+
+---
